@@ -1,0 +1,51 @@
+@font-face {
+    font-family: Roboto-flex;
+    src: url("../font/RobotoFlex.ttf");
+}
+
+body {
+    background-color: #7dc2ad;
+    font-family: Roboto-flex, serif;
+    color: white;
+}
+
+h1, h4 {
+    text-align: center;
+}
+
+h4 {
+    margin: -10px 0 0;
+}
+
+table, th, td {
+    border: 1px solid white;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+th {
+    padding: 3px 5px;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid white;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.first {
+  border: 2px solid black;
+}
+
+.case--end, .katowice--end, .rmr--end, .stockholm--end, .antwerp--end, .rio--end, .paris--end {
+  border-bottom: 2px solid black;
+}
