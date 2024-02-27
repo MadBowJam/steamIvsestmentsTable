@@ -80,7 +80,7 @@ function fillTotalColumn(data) {
   // Заповнення кожної клітинки значеннями з JSON та обчислення значень стовбця "total"
   quantityCells.forEach((cell, index) => {
     const quantity = parseInt(cell.textContent);
-    const price = parseFloat(data[index].price.replace(',', '.')); // Перетворення коми на крапку для коректного парсингу в числа
+    const price = parseFloat(data[index].price); // Перетворення коми на крапку для коректного парсингу в числа
     
     // Перевірка на коректність значень quantity та price
     if (!isNaN(quantity) && !isNaN(price)) {
