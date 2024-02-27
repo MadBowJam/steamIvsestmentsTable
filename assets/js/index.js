@@ -53,17 +53,18 @@ for (let i = 0; i < itemArray.length; i += 4) {
 fetch('./assets/json/prices/27.02.2024__20_09.json')
   .then(response => response.json())
   .then(data => {
-    // Отримання всіх клітинок стовбців "quantity" та "price"
+    // Отримання всіх клітинок стовбців "quantity", "price" та "spend on buy"
     const quantityCells = document.querySelectorAll('.quantity');
     const priceCells = document.querySelectorAll('.price');
+    const spendOnBuyCells = document.querySelectorAll('.spend-on-buy');
     
-    // Отримання всіх клітинок стовбців "total"
+    // Отримання всіх клітинок стовбця "total"
     const totalCells = document.querySelectorAll('.total');
     
     // Заповнення кожної клітинки значеннями з JSON та обчислення значень стовбця "total"
     quantityCells.forEach((cell, index) => {
       const quantity = parseInt(cell.textContent);
-      const price = parseFloat(priceCells[index].textContent.replace(',', '.')); // Перетворення коми на крапку для коректного парсингу в числа
+      const price = parseFloat(data[index].price.replace(',', '.')); // Перетворення коми на крапку для коректного парсингу в числа
       
       // Перевірка на коректність значень quantity та price
       if (!isNaN(quantity) && !isNaN(price)) {
