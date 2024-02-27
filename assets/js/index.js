@@ -108,4 +108,7 @@ function fillTotalColumn() {
 }
 
 // Виклик функції для заповнення стовбця "total"
-fillTotalColumn();
+document.addEventListener('DOMContentLoaded', function() {
+  // Виклик функції для заповнення стовбця "total" після завантаження сторінки
+  fillTotalColumn();
+});
