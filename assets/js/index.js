@@ -83,8 +83,16 @@ fetch('./assets/json/prices/27.02.2024__20_09.json')
 // // const jsonData = require('../assets/json/26.02.2024__21_17.json');
 // populateTable(jsonData);
 
-for (let i = 1; i < itemArray.length; i++) {
-  document.getElementById(`total${i}`).innerHTML = Number(document.getElementById(`price${i}`).innerHTML) * Number(document.getElementById(`quantity${i}`).innerHTML)
-}
+
 
 // Функція для заповнення стовбця "total" на основі значень кількості та ціни
+
+function myFunction() {
+  for (let i = 1; i < itemArray.length; i++) {
+    document.getElementById(`total${i}`).innerHTML = Number(document.getElementById(`price${i}`).innerHTML) * Number(document.getElementById(`quantity${i}`).innerHTML)
+  }
+}
+
+// Встановлення таймауту на 2 секунди
+const timeout = 2000; // 2 секунди
+setTimeout(myFunction, timeout);
