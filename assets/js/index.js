@@ -96,6 +96,8 @@ function myFunction() {
     // console.log(document.getElementById(`quantity${i}`).innerHTML);
     // console.log()
     document.getElementById(`total${i}`).innerHTML = (Number(document.getElementById(`price${i}`).innerHTML) * Number(document.getElementById(`quantity${i}`).innerHTML)).toFixed(2);
+    document.getElementById(`total_spend${i}`).innerHTML = (Number(document.getElementById(`spend_on_buy1${i}`).innerHTML) * Number(document.getElementById(`quantity${i}`).innerHTML)).toFixed(2);
+    document.getElementById(`total_profit1${i}`).innerHTML = (Number(document.getElementById(`total${i}`).innerHTML) / Number(document.getElementById(`total_spend${i}`).innerHTML)).toFixed(2);
   }
 }
 
