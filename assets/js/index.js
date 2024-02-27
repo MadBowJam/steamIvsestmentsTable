@@ -53,15 +53,46 @@ for (let i = 0; i < itemArray.length; i += 4) {
 fetch('./assets/json/prices/27.02.2024__20_09.json')
   .then(response => response.json())
   .then(data => {
-    // Отримання всіх клітинок стовбця "price"
-    const priceCells = document.querySelectorAll('.price');
     
-    // Заповнення кожної клітинки значеннями з JSON
-    priceCells.forEach((cell, index) => {
-      cell.textContent = data[index] || ''; // Якщо дані в JSON не визначені, залишаємо клітинку порожньою
-    });
+    fillTotalColumn(data);
+    // Отримання всіх клітинок стовбця "price"
+    // const priceCells = document.querySelectorAll('.price');
+    //
+    // // Заповнення кожної клітинки значеннями з JSON
+    // priceCells.forEach((cell, index) => {
+    //   cell.textContent = data[index] || ''; // Якщо дані в JSON не визначені, залишаємо клітинку порожньою
+    // });
   })
   .catch(error => console.error('Error fetching JSON:', error));
+
+
+
+
+
+function fillTotalColumn(data) {
+  // Отримання всіх клітинок стовбців "quantity" та "price"
+  const quantityCells = document.querySelectorAll('.quantity');
+  const priceCells = document.querySelectorAll('.price');
+  
+  // Отримання всіх клітинок стовбця "total"
+  const totalCells = document.querySelectorAll('.total');
+  
+  // Заповнення кожної клітинки значеннями з JSON та обчислення значень стовбця "total"
+  quantityCells.forEach((cell, index) => {
+    const quantity = parseInt(cell.textContent);
+    const price = parseFloat(data[index].price.replace(',', '.')); // Перетворення коми на крапку для коректного парсингу в числа
+    
+    // Перевірка на коректність значень quantity та price
+    if (!isNaN(quantity) && !isNaN(price)) {
+      const total = quantity * price;
+      totalCells[index].textContent = total.toFixed(2); // Форматування результату до двох знаків після коми
+    } else {
+      totalCells[index].textContent = ''; // Якщо дані не коректні, залишаємо клітинку порожньою
+    }
+  });
+}
+
+
 
 
 
