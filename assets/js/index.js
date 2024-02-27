@@ -83,9 +83,8 @@ fetch('./assets/json/prices/27.02.2024__20_09.json')
 // // const jsonData = require('../assets/json/26.02.2024__21_17.json');
 // populateTable(jsonData);
 
-for (let i = 0; i < itemArray.length; i++) {
-  const total = document.getElementById(`total${i+1}`);
-  total.innerHTML = Number(document.getElementById(`price${i+1}`).innerHTML) * Number(document.getElementById(`quantity${i+1}`).innerHTML)
+for (let i = 1; i < itemArray.length; i++) {
+  document.getElementById(`total${i}`).innerHTML = Number(document.getElementById(`price${i}`).innerHTML) * Number(document.getElementById(`quantity${i}`).innerHTML)
 }
 
 // Функція для заповнення стовбця "total" на основі значень кількості та ціни
