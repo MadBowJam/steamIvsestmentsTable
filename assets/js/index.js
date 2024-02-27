@@ -50,7 +50,7 @@ for (let i = 0; i < itemArray.length; i += 4) {
 
 
 
-fetch('./assets/json/26.02.2024__21_17.json')
+fetch('./assets/json/price/26.02.2024__21_17.json')
   .then(response => response.json())
   .then(data => {
     // Отримання всіх клітинок стовбця "price"
