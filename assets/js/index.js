@@ -89,6 +89,7 @@ fetch('./assets/json/prices/27.02.2024__20_09.json')
 
 function myFunction() {
   for (let i = 1; i <= itemArray.length; i++) {
+    console.log(i)
     console.log(document.getElementById(`price${i}`).innerHTML);
     console.log(document.getElementById(`quantity${i}`).innerHTML);
     // console.log()
