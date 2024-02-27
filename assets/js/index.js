@@ -83,32 +83,9 @@ fetch('./assets/json/prices/27.02.2024__20_09.json')
 // // const jsonData = require('../assets/json/26.02.2024__21_17.json');
 // populateTable(jsonData);
 
-
-
-// Функція для заповнення стовбця "total" на основі значень кількості та ціни
-function fillTotalColumn() {
-  // Отримання всіх клітинок стовбців "quantity", "price" та "total"
-  const quantityCells = document.querySelectorAll('.quantity');
-  const priceCells = document.querySelectorAll('.price');
-  const totalCells = document.querySelectorAll('.total');
-  
-  // Заповнення кожної клітинки стовбця "total" значенням добутку кількості та ціни
-  quantityCells.forEach((quantityCell, index) => {
-    const quantity = parseInt(quantityCell.textContent);
-    const price = parseFloat(priceCells[index].textContent); // Заміна коми на крапку
-    
-    // Перевірка на коректність значень кількості та ціни
-    if (!isNaN(quantity) && !isNaN(price)) {
-      const total = quantity * price;
-      totalCells[index].textContent = total.toFixed(2); // Форматування результату до двох знаків після коми
-    } else {
-      totalCells[index].textContent = ''; // Якщо дані некоректні, залишаємо клітинку порожньою
-    }
-  });
+for (let i = 0; i < itemArray.length; i++) {
+  const total = document.getElementById(`total${i+1}`);
+  total.innerHTML = Number(document.getElementById(`price${i+1}`).innerHTML) * Number(document.getElementById(`quantity${i+1}`).innerHTML)
 }
 
-// Виклик функції для заповнення стовбця "total"
-document.addEventListener('DOMContentLoaded', function() {
-  // Виклик функції для заповнення стовбця "total" після завантаження сторінки
-  fillTotalColumn();
-});
+// Функція для заповнення стовбця "total" на основі значень кількості та ціни
