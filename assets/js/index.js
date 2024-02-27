@@ -36,7 +36,7 @@ const jsonData = [
 // // Заповнюємо таблицю даними з JSON
 // populateTable(jsonData);
 
-fetch('assets/json/26.02.2024__21_17.json')
+fetch('./assets/json/26.02.2024__21_17.json')
   .then(response => response.json())
   .then(data => populateTable(data))
   .catch(error => console.error('Error fetching JSON:', error));
