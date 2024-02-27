@@ -87,11 +87,13 @@ fetch('./assets/json/prices/27.02.2024__20_09.json')
 
 // Функція для заповнення стовбця "total" на основі значень кількості та ціни
 
+console.log(itemArray.length)
+
 function myFunction() {
   for (let i = 1; i <= itemArray.length; i++) {
     console.log(i)
-    console.log(document.getElementById(`price${i}`).innerHTML);
-    console.log(document.getElementById(`quantity${i}`).innerHTML);
+    // console.log(document.getElementById(`price${i}`).innerHTML);
+    // console.log(document.getElementById(`quantity${i}`).innerHTML);
     // console.log()
     document.getElementById(`total${i}`).innerHTML = (Number(document.getElementById(`price${i}`).innerHTML) * Number(document.getElementById(`quantity${i}`).innerHTML)).toFixed(2);
   }
