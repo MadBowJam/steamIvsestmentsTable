@@ -90,7 +90,7 @@ fetch('./assets/json/prices/27.02.2024__20_09.json')
 console.log(itemArray.length)
 
 function myFunction() {
-  for (let i = 1; i <= itemArray.length; i++) {
+  for (let i = 1; i <= (itemArray.length / 4); i++) {
     console.log(i)
     // console.log(document.getElementById(`price${i}`).innerHTML);
     // console.log(document.getElementById(`quantity${i}`).innerHTML);
@@ -100,5 +100,5 @@ function myFunction() {
 }
 
 // Встановлення таймауту на 2 секунди
-const timeout = 2000; // 2 секунди
+const timeout = 500; // 2 секунди
 setTimeout(myFunction, timeout);
