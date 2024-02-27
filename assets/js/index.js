@@ -26,20 +26,59 @@ function populateTable(data) {
   });
 }
 
-// Приклад JSON даних
-const jsonData = [
-  {tournament: 'T1', name: 'Item1', price: '$10', quantity: 5, total: '$50', spendOnBuy: '$30', totalSpend: '$60', totalProfit: '$20'},
-  {tournament: 'T2', name: 'Item2', price: '$20', quantity: 3, total: '$60', spendOnBuy: '$25', totalSpend: '$65', totalProfit: '$35'},
-  // Додаткові дані можна додати за потреби
-];
-//
-// // Заповнюємо таблицю даними з JSON
-// populateTable(jsonData);
+// Функція для генерації унікального ідентифікатора для стовбця
+function generateColumnId(columnName, columnIndex) {
+  return `${columnName.replace(/\s+/g, '_').toLowerCase()}${columnIndex}`;
+}
+
+// Функція для заповнення таблиці даними з itemArray
+for (let i = 0; i < itemArray.length; i += 4) {
+  const row = table.insertRow();
+  const [tournament, name, quantity, spendOnBuy] = itemArray.slice(i, i + 4);
+  
+  const cellData = [tournament, name, '', quantity, '', spendOnBuy, '', ''];
+  
+  cellData.forEach((data, index) => {
+    const cell = row.insertCell();
+    cell.textContent = data;
+    const columnName = index === 0 ? 'tournament' : index === 1 ? 'name' : index === 3 ? 'quantity' : index === 5 ? 'spend_on_buy' : index === 2 ? 'price' : index === 4 ? 'total' : index === 6 ? 'total_spend' : 'total_profit';
+    cell.id = generateColumnId(columnName, i / 4 + 1);
+    cell.classList.add(columnName.replace(/\s+/g, '-').toLowerCase());
+  });
+}
+
+
+
 
 fetch('./assets/json/26.02.2024__21_17.json')
   .then(response => response.json())
-  .then(data => populateTable(data))
+  .then(data => {
+    // Отримання всіх клітинок стовбця "price"
+    const priceCells = document.querySelectorAll('.price');
+    
+    // Заповнення кожної клітинки значеннями з JSON
+    priceCells.forEach((cell, index) => {
+      cell.textContent = data[index] || ''; // Якщо дані в JSON не визначені, залишаємо клітинку порожньою
+    });
+  })
   .catch(error => console.error('Error fetching JSON:', error));
 
-// const jsonData = require('../assets/json/26.02.2024__21_17.json');
-populateTable(jsonData);
+
+
+// // Приклад JSON даних
+// const jsonData = [
+//   {tournament: 'T1', name: 'Item1', price: '$10', quantity: 5, total: '$50', spendOnBuy: '$30', totalSpend: '$60', totalProfit: '$20'},
+//   {tournament: 'T2', name: 'Item2', price: '$20', quantity: 3, total: '$60', spendOnBuy: '$25', totalSpend: '$65', totalProfit: '$35'},
+//   // Додаткові дані можна додати за потреби
+// ];
+// //
+// // // Заповнюємо таблицю даними з JSON
+// // populateTable(jsonData);
+//
+// fetch('./assets/json/26.02.2024__21_17.json')
+//   .then(response => response.json())
+//   .then(data => populateTable(data))
+//   .catch(error => console.error('Error fetching JSON:', error));
+//
+// // const jsonData = require('../assets/json/26.02.2024__21_17.json');
+// populateTable(jsonData);
