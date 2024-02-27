@@ -1,4 +1,4 @@
-[
+const itemArray = [
   "Case", "Prisma",7,0,
   "Case","Fracture",5,0,
   "Case","Prisma 2",3,0,
