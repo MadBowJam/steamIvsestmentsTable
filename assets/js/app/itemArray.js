@@ -7,7 +7,7 @@ const itemArray = [
   "Case","Dreams & Nightmares",4,0,
   "Case","Snakebite",1,0,
   "Case","Revolution",1,0,
-  "Case","Recoil",36,0,
+  "Case","Recoil",36,10,
   "Katowice 2019","Natus Vincere",12,3,
   "Katowice 2019","FaZe Clan",5,1.25,
   "2020 RMR","Legends",50,12.5,
