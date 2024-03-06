@@ -50,18 +50,18 @@ for (let i = 0; i < itemArray.length; i += 4) {
 
 
 
-// fetch('./assets/json/06.03.2024__13_20.json')
-//   .then(response => response.json())
-//   .then(data => {
-//     // Отримання всіх клітинок стовбця "price"
-//     const priceCells = document.querySelectorAll('.price');
-//
-//     // Заповнення кожної клітинки значеннями з JSON
-//     priceCells.forEach((cell, index) => {
-//       cell.textContent = data[index] || ''; // Якщо дані в JSON не визначені, залишаємо клітинку порожньою
-//     });
-//   })
-//   .catch(error => console.error('Error fetching JSON:', error));
+fetch('./assets/json/06.03.2024__13_20.json')
+  .then(response => response.json())
+  .then(data => {
+    // Отримання всіх клітинок стовбця "price"
+    const priceCells = document.querySelectorAll('.price');
+    
+    // Заповнення кожної клітинки значеннями з JSON
+    priceCells.forEach((cell, index) => {
+      cell.textContent = data[index] || ''; // Якщо дані в JSON не визначені, залишаємо клітинку порожньою
+    });
+  })
+  .catch(error => console.error('Error fetching JSON:', error));
 
 
 console.log(itemArray.length)
@@ -81,55 +81,3 @@ function myFunction() {
 // Встановлення таймауту на 2 секунди
 const timeout = 500; // 2 секунди
 setTimeout(myFunction, timeout);
-
-
-
-
-
-
-
-// Функція для отримання назв файлів в папці
-function getFilesInDirectory(directory) {
-  return fetch(directory)
-    .then(response => response.text())
-    .then(text => {
-      const parser = new DOMParser();
-      const htmlDocument = parser.parseFromString(text, 'text/html');
-      const links = htmlDocument.querySelectorAll('a');
-      const fileNames = [];
-      links.forEach(link => {
-        if (link.href.endsWith('.json')) {
-          fileNames.push(link.href);
-        }
-      });
-      console.log(fileNames)
-      return fileNames;
-    });
-}
-
-// Функція для отримання найновішого файлу
-function getNewestFile(files) {
-  return files.reduce((newestFile, currentFile) => {
-    // Отримуємо дату з імені файлу
-    const newestDate = new Date(newestFile.split('/')[2].split('__')[0]);
-    const currentDate = new Date(currentFile.split('/')[2].split('__')[0]);
-    // Порівнюємо дати
-    return currentDate > newestDate ? currentFile : newestFile;
-  });
-}
-
-getFilesInDirectory('./assets/json/')
-  .then(files => {
-    // Знаходимо найновіший файл
-    const newestFile = getNewestFile(files);
-    // Виконуємо запит до найновішого файлу
-    return fetch(newestFile);
-  })
-  .then(response => response.json())
-  .then(data => {
-    const priceCells = document.querySelectorAll('.price');
-    priceCells.forEach((cell, index) => {
-      cell.textContent = data[index] || '';
-    });
-  })
-  .catch(error => console.error('Error:', error));
