@@ -36,19 +36,17 @@ for (let i = 0; i < itemArray.length; i += 4) {
   const row = table.insertRow();
   const [tournament, name, quantity, spendOnBuy] = itemArray.slice(i, i + 4);
   
-  const cellData = [tournament, name, '', quantity, '', spendOnBuy, '', ''];
+  const cellData = [tournament, name, '', quantity, '', spendOnBuy];
   
   cellData.forEach((data, index) => {
     const cell = row.insertCell();
     cell.textContent = data;
-    const columnName = index === 0 ? 'tournament' : index === 1 ? 'name' : index === 3 ? 'quantity' : index === 5 ? 'spend_on_buy' : index === 2 ? 'price' : index === 4 ? 'total' : index === 6 ? 'total_spend' : 'total_profit';
+    // const columnName = index === 0 ? 'tournament' : index === 1 ? 'name' : index === 3 ? 'quantity' : index === 5 ? 'spend_on_buy' : index === 2 ? 'price' : index === 4 ? 'total' : index === 6 ? 'total_spend' : 'total_profit';
+    const columnName = index === 0 ? 'tournament' : index === 1 ? 'name' : index === 3 ? 'quantity' : index === 4 ? 'spend_on_buy' : 'price';
     cell.id = generateColumnId(columnName, i / 4 + 1);
     cell.classList.add(columnName.replace(/\s+/g, '-').toLowerCase());
   });
 }
-
-
-
 
 fetch('./assets/json/06.03.2024__13_20.json')
   .then(response => response.json())
@@ -128,5 +126,3 @@ function calculateTotalAndForEachType() {
 
 // Виклик функції після завершення таймауту
 setTimeout(calculateTotalAndForEachType, timeout);
-
-
