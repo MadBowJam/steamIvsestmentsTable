@@ -79,50 +79,40 @@ function myFunction() {
 const timeout = 500; // 2 секунди
 setTimeout(myFunction, timeout);
 
-// Функція для обчислення та виведення суми клітинок з класом "total"
-function calculateTotal() {
+function calculateTotalAndForEachType() {
   let totalSum = 0;
-  const totalCells = document.querySelectorAll('.total');
-  totalCells.forEach(cell => {
-    const value = parseFloat(cell.textContent) || 0; // Перевіряємо, чи текст можна конвертувати в число
-    totalSum += value;
-  });
-  
-  // Створюємо новий абзац для відображення суми
-  const totalParagraph = document.createElement('p');
-  totalParagraph.textContent = `Total sum: ${totalSum.toFixed(2)}`; // Фіксуємо суму до двох десяткових знаків
-  totalParagraph.classList.add('overAllPrice'); // Додаємо клас "overAllPrice"
-  document.body.appendChild(totalParagraph); // Додаємо абзац до сторінки
-}
-
-// Виклик функції після завершення таймауту
-setTimeout(calculateTotal, timeout);
-
-
-// Функція для обчислення суми трьох клітинок з класом "total" для кожного типу товару
-// Функція для обчислення суми трьох клітинок з класом "total" для кожного типу товару
-function calculateTotalForEachType() {
   const types = {};
   
   // Перебираємо клітинки з класом "total"
   const totalCells = document.querySelectorAll('.total');
   totalCells.forEach(cell => {
-    const type = cell.parentNode.cells[0].textContent; // Отримуємо тип товару з першої клітинки в поточному рядку
-    const price = parseFloat(cell.textContent);
+    // Додавання класу "overAllPrice" до клітинок
+    cell.classList.add('overAllPrice');
     
-    // Якщо тип товару ще не був доданий до об'єкта types, створюємо його
+    // Обчислення загальної суми для усіх клітинок з класом "total"
+    const value = parseFloat(cell.textContent) || 0;
+    totalSum += value;
+    
+    // Отримання типу товару з першої клітинки в поточному рядку
+    const type = cell.parentNode.cells[0].textContent;
+    
+    // Додавання ціни до відповідного типу товару
     if (!types[type]) {
       types[type] = [];
     }
-    
-    // Додаємо ціну до відповідного типу товару
-    types[type].push(price);
+    types[type].push(value);
   });
   
-  // Створюємо параграфи для кожного типу товару та виводимо їх суму
+  // Створення абзацу для відображення загальної суми
+  const totalParagraph = document.createElement('p');
+  totalParagraph.textContent = `Total sum: ${totalSum.toFixed(2)}`;
+  totalParagraph.classList.add('overAllPrice');
+  document.body.appendChild(totalParagraph);
+  
+  // Створення абзаців для відображення суми для кожного типу товару
   for (const type in types) {
     if (types.hasOwnProperty(type)) {
-      const typeTotal = types[type].reduce((acc, curr) => acc + curr, 0); // Обчислюємо суму для даного типу товару
+      const typeTotal = types[type].reduce((acc, curr) => acc + curr, 0);
       const paragraph = document.createElement('p');
       paragraph.textContent = `${type}: Total sum - ${typeTotal.toFixed(2)}`;
       paragraph.classList.add('overAllPrice');
@@ -131,5 +121,6 @@ function calculateTotalForEachType() {
   }
 }
 
-// Викликаємо функцію після завершення таймауту
-setTimeout(calculateTotalForEachType, 2000);
+// Виклик функції після завершення таймауту
+setTimeout(calculateTotalAndForEachType, timeout);
+
