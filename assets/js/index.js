@@ -67,7 +67,7 @@ function myFunction() {
     console.log(document.getElementById(`price${i}`).innerHTML);
     console.log(document.getElementById(`quantity${i}`).innerHTML);
     console.log(document.getElementById(`quantity${i}`).innerHTML * document.getElementById(`price${i}`).innerHTML);
-    console.log(document.getElementById(`total${i}`).innerHTML);
+    console.log(document.getElementById(`total${i}`));
     
     
     // document.getElementById(`total${i}`).innerHTML = (Number(document.getElementById(`price${i}`).innerHTML) * Number(document.getElementById(`quantity${i}`).innerHTML)).toFixed(2);
