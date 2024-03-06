@@ -130,4 +130,4 @@ function calculateTotalForEachType() {
 }
 
 // Викликаємо функцію після завершення таймауту
-setTimeout(calculateTotalForEachType, timeout);
+setTimeout(calculateTotalForEachType, 2000);
