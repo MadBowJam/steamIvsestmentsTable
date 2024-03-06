@@ -42,7 +42,8 @@ for (let i = 0; i < itemArray.length; i += 4) {
     const cell = row.insertCell();
     cell.textContent = data;
     // const columnName = index === 0 ? 'tournament' : index === 1 ? 'name' : index === 3 ? 'quantity' : index === 5 ? 'spend_on_buy' : index === 2 ? 'price' : index === 4 ? 'total' : index === 6 ? 'total_spend' : 'total_profit';
-    const columnName = index === 0 ? 'tournament' : index === 1 ? 'name' : index === 3 ? 'quantity' : index === 5 ? 'spend_on_buy' : 'total';
+    // const columnName = index === 0 ? 'tournament' : index === 1 ? 'name' : index === 3 ? 'quantity' : index === 5 ? 'spend_on_buy' : 'price';
+    const columnName = index === 0 ? 'tournament' : index === 1 ? 'name' : index === 2 ? 'price' : index === 3 ? 'quantity' : index === 4 ? 'total' : 'spend_on_buy'; // Оновлені умови відповідно до нового порядку стовпців
     cell.id = generateColumnId(columnName, i / 4 + 1);
     cell.classList.add(columnName.replace(/\s+/g, '-').toLowerCase());
   });
