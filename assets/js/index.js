@@ -106,9 +106,7 @@ function calculateTotalForEachType() {
   // Перебираємо масив itemArray з кроком 4, оскільки кожні 4 елементи відповідають одному типу товару
   for (let i = 0; i < itemArray.length; i += 4) {
     const type = itemArray[i];
-    const price = parseFloat(itemArray[i + 2]);
-    const quantity = parseFloat(itemArray[i + 3]);
-    const total = price * quantity;
+    const total = document.getElementById(`total${i}`).innerHTML;
     
     // Якщо тип товару ще не був доданий до об'єкта types, створюємо його
     if (!types[type]) {
