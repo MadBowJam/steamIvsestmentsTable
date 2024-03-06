@@ -66,8 +66,14 @@ function myFunction() {
     console.log(i)
     console.log(document.getElementById(`price${i}`).innerHTML);
     console.log(document.getElementById(`quantity${i}`).innerHTML);
-    // console.log()
-    document.getElementById(`total${i}`).innerHTML = (Number(document.getElementById(`price${i}`).innerHTML) * Number(document.getElementById(`quantity${i}`).innerHTML)).toFixed(2);
+    console.log(document.getElementById(`quantity${i}`).innerHTML * document.getElementById(`price${i}`).innerHTML);
+    console.log(document.getElementById(`total${i}`).innerHTML);
+    
+    
+    // document.getElementById(`total${i}`).innerHTML = (Number(document.getElementById(`price${i}`).innerHTML) * Number(document.getElementById(`quantity${i}`).innerHTML)).toFixed(2);
+    
+    
+    
     // document.getElementById(`total_spend${i}`).innerHTML = (Number(document.getElementById(`spend_on_buy${i}`).innerHTML) * Number(document.getElementById(`quantity${i}`).innerHTML)).toFixed(2);
     // document.getElementById(`total_profit${i}`).innerHTML = (Number(document.getElementById(`total${i}`).innerHTML) / Number(document.getElementById(`total_spend${i}`).innerHTML)).toFixed(2);
   }
