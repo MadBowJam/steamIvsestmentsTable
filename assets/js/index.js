@@ -81,3 +81,21 @@ function myFunction() {
 // Встановлення таймауту на 2 секунди
 const timeout = 500; // 2 секунди
 setTimeout(myFunction, timeout);
+
+// Функція для обчислення та виведення суми клітинок з класом "total"
+function calculateTotal() {
+  let totalSum = 0;
+  const totalCells = document.querySelectorAll('.total');
+  totalCells.forEach(cell => {
+    const value = parseFloat(cell.textContent) || 0; // Перевіряємо, чи текст можна конвертувати в число
+    totalSum += value;
+  });
+  
+  // Створюємо новий абзац для відображення суми
+  const totalParagraph = document.createElement('p');
+  totalParagraph.textContent = `Total sum: ${totalSum.toFixed(2)}`; // Фіксуємо суму до двох десяткових знаків
+  document.body.appendChild(totalParagraph); // Додаємо абзац до сторінки
+}
+
+// Виклик функції після завершення таймауту
+setTimeout(calculateTotal, timeout);
