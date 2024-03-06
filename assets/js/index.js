@@ -50,7 +50,7 @@ for (let i = 0; i < itemArray.length; i += 4) {
 
 
 
-fetch('./assets/json/prices/01.03.2024__18_13.json')
+fetch('./assets/json/06.03.2024__13_20.json')
   .then(response => response.json())
   .then(data => {
     // Отримання всіх клітинок стовбця "price"
@@ -63,29 +63,6 @@ fetch('./assets/json/prices/01.03.2024__18_13.json')
   })
   .catch(error => console.error('Error fetching JSON:', error));
 
-
-
-// // Приклад JSON даних
-// const jsonData = [
-//   {tournament: 'T1', name: 'Item1', price: '$10', quantity: 5, total: '$50', spendOnBuy: '$30', totalSpend: '$60', totalProfit: '$20'},
-//   {tournament: 'T2', name: 'Item2', price: '$20', quantity: 3, total: '$60', spendOnBuy: '$25', totalSpend: '$65', totalProfit: '$35'},
-//   // Додаткові дані можна додати за потреби
-// ];
-// //
-// // // Заповнюємо таблицю даними з JSON
-// // populateTable(jsonData);
-//
-// fetch('./assets/json/26.02.2024__21_17.json')
-//   .then(response => response.json())
-//   .then(data => populateTable(data))
-//   .catch(error => console.error('Error fetching JSON:', error));
-//
-// // const jsonData = require('../assets/json/26.02.2024__21_17.json');
-// populateTable(jsonData);
-
-
-
-// Функція для заповнення стовбця "total" на основі значень кількості та ціни
 
 console.log(itemArray.length)
 
