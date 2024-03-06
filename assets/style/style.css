@@ -26,8 +26,16 @@ table {
     margin: 0 auto;
 }
 
+td {
+    padding: 5px 10px;
+}
+
 th {
-    padding: 3px 5px;
+    padding: 5px 10px;
+}
+
+.price, .quantity, .total, .spend_on_buy, .total_spend, .total_profit {
+    text-align: center;
 }
 
 button {
