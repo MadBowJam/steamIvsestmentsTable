@@ -100,22 +100,24 @@ setTimeout(calculateTotal, timeout);
 
 
 // Функція для обчислення суми трьох клітинок з класом "total" для кожного типу товару
+// Функція для обчислення суми трьох клітинок з класом "total" для кожного типу товару
 function calculateTotalForEachType() {
   const types = {};
   
-  // Перебираємо масив itemArray з кроком 4, оскільки кожні 4 елементи відповідають одному типу товару
-  for (let i = 0; i < itemArray.length; i += 4) {
-    const type = itemArray[i];
-    const total = document.getElementById(`total${i}`).innerHTML;
+  // Перебираємо клітинки з класом "total"
+  const totalCells = document.querySelectorAll('.total');
+  totalCells.forEach(cell => {
+    const type = cell.parentNode.cells[0].textContent; // Отримуємо тип товару з першої клітинки в поточному рядку
+    const price = parseFloat(cell.textContent);
     
     // Якщо тип товару ще не був доданий до об'єкта types, створюємо його
     if (!types[type]) {
       types[type] = [];
     }
     
-    // Додаємо суму до відповідного типу товару
-    types[type].push(total);
-  }
+    // Додаємо ціну до відповідного типу товару
+    types[type].push(price);
+  });
   
   // Створюємо параграфи для кожного типу товару та виводимо їх суму
   for (const type in types) {
