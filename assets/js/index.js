@@ -63,9 +63,6 @@ fetch('./assets/json/06.03.2024__13_20.json')
   })
   .catch(error => console.error('Error fetching JSON:', error));
 
-
-console.log(itemArray.length)
-
 function myFunction() {
   for (let i = 1; i <= (itemArray.length / 4); i++) {
     console.log(i)
@@ -94,8 +91,45 @@ function calculateTotal() {
   // Створюємо новий абзац для відображення суми
   const totalParagraph = document.createElement('p');
   totalParagraph.textContent = `Total sum: ${totalSum.toFixed(2)}`; // Фіксуємо суму до двох десяткових знаків
+  totalParagraph.classList.add('overAllPrice'); // Додаємо клас "overAllPrice"
   document.body.appendChild(totalParagraph); // Додаємо абзац до сторінки
 }
 
 // Виклик функції після завершення таймауту
 setTimeout(calculateTotal, timeout);
+
+
+// Функція для обчислення суми трьох клітинок з класом "total" для кожного типу товару
+function calculateTotalForEachType() {
+  const types = {};
+  
+  // Перебираємо масив itemArray з кроком 4, оскільки кожні 4 елементи відповідають одному типу товару
+  for (let i = 0; i < itemArray.length; i += 4) {
+    const type = itemArray[i];
+    const price = parseFloat(itemArray[i + 2]);
+    const quantity = parseFloat(itemArray[i + 3]);
+    const total = price * quantity;
+    
+    // Якщо тип товару ще не був доданий до об'єкта types, створюємо його
+    if (!types[type]) {
+      types[type] = [];
+    }
+    
+    // Додаємо суму до відповідного типу товару
+    types[type].push(total);
+  }
+  
+  // Створюємо параграфи для кожного типу товару та виводимо їх суму
+  for (const type in types) {
+    if (types.hasOwnProperty(type)) {
+      const typeTotal = types[type].reduce((acc, curr) => acc + curr, 0); // Обчислюємо суму для даного типу товару
+      const paragraph = document.createElement('p');
+      paragraph.textContent = `${type}: Total sum - ${typeTotal.toFixed(2)}`;
+      paragraph.classList.add('overAllPrice');
+      document.body.appendChild(paragraph);
+    }
+  }
+}
+
+// Викликаємо функцію після завершення таймауту
+setTimeout(calculateTotalForEachType, timeout);
