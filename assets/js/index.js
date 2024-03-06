@@ -105,12 +105,6 @@ function calculateTotalAndForEachType() {
     types[type].push(value);
   });
   
-  // Створення абзацу для відображення загальної суми
-  const totalParagraph = document.createElement('p');
-  totalParagraph.textContent = `Total sum: ${totalSum.toFixed(2)}`;
-  totalParagraph.classList.add('overAllPrice');
-  totalPriceDiv.appendChild(totalParagraph); // Додаємо абзац загальної суми в дів
-  
   // Створення абзаців для відображення суми для кожного типу товару
   for (const type in types) {
     if (types.hasOwnProperty(type)) {
@@ -121,6 +115,12 @@ function calculateTotalAndForEachType() {
       totalPriceDiv.appendChild(paragraph); // Додаємо абзац для кожного типу товару в дів
     }
   }
+  
+  // Створення абзацу для відображення загальної суми
+  const totalParagraph = document.createElement('p');
+  totalParagraph.textContent = `Total sum: ${totalSum.toFixed(2)}`;
+  totalParagraph.classList.add('overAllPrice');
+  totalPriceDiv.appendChild(totalParagraph); // Додаємо абзац загальної суми в дів
   
   // Додаємо дів зі всіма абзацами в кінець сторінки
   document.body.appendChild(totalPriceDiv);

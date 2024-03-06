@@ -50,6 +50,11 @@ button {
     font-weight: 600;
 }
 
+.totalPrice {
+    margin: 0 auto;
+    max-width: 900px;
+}
+
 .overAllPrice {
-    text-align: center;
+    margin: 5px 0;
 }
