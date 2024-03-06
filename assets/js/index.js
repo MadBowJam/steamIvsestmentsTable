@@ -82,6 +82,8 @@ setTimeout(myFunction, timeout);
 function calculateTotalAndForEachType() {
   let totalSum = 0;
   const types = {};
+  const totalPriceDiv = document.createElement('div');
+  totalPriceDiv.classList.add('totalPrice'); // Додавання класу "totalPrice" до створеного діва
   
   // Перебираємо клітинки з класом "total"
   const totalCells = document.querySelectorAll('.total');
@@ -107,7 +109,7 @@ function calculateTotalAndForEachType() {
   const totalParagraph = document.createElement('p');
   totalParagraph.textContent = `Total sum: ${totalSum.toFixed(2)}`;
   totalParagraph.classList.add('overAllPrice');
-  document.body.appendChild(totalParagraph);
+  totalPriceDiv.appendChild(totalParagraph); // Додаємо абзац загальної суми в дів
   
   // Створення абзаців для відображення суми для кожного типу товару
   for (const type in types) {
@@ -116,11 +118,15 @@ function calculateTotalAndForEachType() {
       const paragraph = document.createElement('p');
       paragraph.textContent = `${type}: Total sum - ${typeTotal.toFixed(2)}`;
       paragraph.classList.add('overAllPrice');
-      document.body.appendChild(paragraph);
+      totalPriceDiv.appendChild(paragraph); // Додаємо абзац для кожного типу товару в дів
     }
   }
+  
+  // Додаємо дів зі всіма абзацами в кінець сторінки
+  document.body.appendChild(totalPriceDiv);
 }
 
 // Виклик функції після завершення таймауту
 setTimeout(calculateTotalAndForEachType, timeout);
+
 
