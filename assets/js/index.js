@@ -26,7 +26,7 @@ function populateTable(data) {
   });
 }
 
-// Функція для генерації унікального ідентифікатора для стовбця
+// Функція для генерації унікального ідентифікатора для стовпця
 function generateColumnId(columnName, columnIndex) {
   return `${columnName.replace(/\s+/g, '_').toLowerCase()}${columnIndex}`;
 }
@@ -41,18 +41,16 @@ for (let i = 0; i < itemArray.length; i += 4) {
   cellData.forEach((data, index) => {
     const cell = row.insertCell();
     cell.textContent = data;
-    // const columnName = index === 0 ? 'tournament' : index === 1 ? 'name' : index === 3 ? 'quantity' : index === 5 ? 'spend_on_buy' : index === 2 ? 'price' : index === 4 ? 'total' : index === 6 ? 'total_spend' : 'total_profit';
-    // const columnName = index === 0 ? 'tournament' : index === 1 ? 'name' : index === 3 ? 'quantity' : index === 5 ? 'spend_on_buy' : 'price';
     const columnName = index === 0 ? 'tournament' : index === 1 ? 'name' : index === 2 ? 'price' : index === 3 ? 'quantity' : index === 4 ? 'total' : 'spend_on_buy'; // Оновлені умови відповідно до нового порядку стовпців
     cell.id = generateColumnId(columnName, i / 4 + 1);
     cell.classList.add(columnName.replace(/\s+/g, '-').toLowerCase());
   });
 }
 
-fetch('./assets/json/06.03.2024__13_20.json')
+fetch('./assets/json/14.03.2024__10_04.json')
   .then(response => response.json())
   .then(data => {
-    // Отримання всіх клітинок стовбця "price"
+    // Отримання всіх клітинок стовпця "price"
     const priceCells = document.querySelectorAll('.price');
     
     // Заповнення кожної клітинки значеннями з JSON
@@ -88,7 +86,7 @@ function calculateTotalAndForEachType() {
   let totalSum = 0;
   const types = {};
   const totalPriceDiv = document.createElement('div');
-  totalPriceDiv.classList.add('totalPrice'); // Додавання класу "totalPrice" до створеного діва
+  totalPriceDiv.classList.add('totalPrice'); // Додавання класу "totalPrice" до створеного  div
   
   // Перебираємо клітинки з класом "total"
   const totalCells = document.querySelectorAll('.total');
