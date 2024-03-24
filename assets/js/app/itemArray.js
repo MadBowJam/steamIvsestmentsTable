@@ -1,10 +1,10 @@
 const itemArray = [
   "Case", "Prisma",7,0,
-  "Case","Fracture",5,0,
+  "Case","Fracture",6,0,
   "Case","Prisma 2",3,0,
   "Case","Danger Zone",1,0,
   "Case","Clutch",2,0,
-  "Case","Dreams & Nightmares",4,0,
+  "Case","Dreams & Nightmares",5,0,
   "Case","Snakebite",1,0,
   "Case","Revolution",1,0,
   "Case","Recoil",36,10,

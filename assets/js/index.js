@@ -47,7 +47,7 @@ for (let i = 0; i < itemArray.length; i += 4) {
   });
 }
 
-fetch('./assets/json/14.03.2024__10_04.json')
+fetch('./assets/json/24.03.2024__13_11.json')
   .then(response => response.json())
   .then(data => {
     // Отримання всіх клітинок стовпця "price"
